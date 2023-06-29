@@ -23,20 +23,25 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: ()=> {
-                Get.toNamed(AppRoutes.secondScreen)
-              },
-              child: const Text(
-                "Open Second Screen"
-              )
+              Obx(
+                  () => Text(
+                      '${controller.count.value}',
+                      style: Theme.of(context).textTheme.headlineLarge,
+                  ),
               ),
               const SizedBox(height: 10),
-              Obx(
-                    () => Text(
-                  '${controller.count.value}',
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-              )
+              ElevatedButton(onPressed: ()=> {
+                  Get.toNamed(
+                      AppRoutes.secondScreen,
+                    arguments: {
+                        "count": '${controller.count.value}'
+                    }
+                  )
+                },
+                child: const Text(
+                  "Open Second Screen"
+                )
+              ),
             ],
           ),
         ),

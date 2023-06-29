@@ -10,18 +10,16 @@ class AppRoutes {
 
   static final List<GetPage> routes = [
     _createPage(home, const HomeScreen()),
-    _createPage(secondScreen,const SecondScreen())
+    _createPage(secondScreen, const SecondScreen())
   ];
 
   static GetPage _createPage(
       String name,
       Widget widget,
-      {Object? arguments}
   ){
     return GetPage(
         name: name,
         page: () => widget,
-        arguments: arguments
     );
   }
 }
