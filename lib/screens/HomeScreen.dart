@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/HomeScreenController.dart';
+import '../utils/routes/AppRoutes.dart';
 import '../widgets/MainAppBar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,17 +13,31 @@ class HomeScreen extends StatelessWidget {
     final controller = Get.put(HomeScreenController());
 
     return Scaffold(
-        appBar: const PreferredSize(
-            preferredSize: Size(double.infinity, 50),
-            child: MainAppBar(
-              title: "Home Page",
-            )),
-        body: Center(
-          child : Obx(
-              () => Text(
-                '${controller.count.value}',
-                style: Theme.of(context).textTheme.headline4,
+        appBar: const MainAppBar(
+          title: "Home Page",
+        ),
+        body: SizedBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ElevatedButton(onPressed: ()=> {
+                Get.toNamed(AppRoutes.secondScreen)
+              },
+              child: const Text(
+                "Open Second Screen"
+              )
               ),
+              const SizedBox(height: 10),
+              Obx(
+                    () => Text(
+                  '${controller.count.value}',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+              )
+            ],
           ),
         ),
       floatingActionButton: FloatingActionButton(
